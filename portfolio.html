@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio — Praseodymium Web Co.</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Filter tabs */
+    .filter-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .filter-btn {
+      padding: 8px 20px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      background: transparent;
+      color: var(--text-dim);
+      border: 1px solid rgba(0,255,136,0.15);
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: rgba(0,255,136,0.1);
+      color: var(--green);
+      border-color: rgba(0,255,136,0.4);
+    }
+
+    /* Portfolio grid */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    /* Animated hex decoration in thumb */
+    .thumb-hex {
+      width: 80px; height: 80px;
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .thumb-hex svg {
+      position: absolute; inset: 0;
+      animation: hexSpin 8s linear infinite;
+    }
+
+    @keyframes hexSpin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    .thumb-hex .hex-label {
+      font-family: var(--font-mono);
+      font-size: 1.4rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Featured card */
+    .portfolio-card.featured {
+      grid-column: span 2;
+    }
+    .portfolio-card.featured .portfolio-thumb {
+      height: 260px;
+    }
+
+    @media (max-width: 680px) {
+      .portfolio-card.featured { grid-column: span 1; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a class="nav-logo" href="index.html">
+    <img src="assets/logo.png" alt="Praseodymium Web Co. Logo">
+    <div class="nav-logo-text">
+      Praseodymium
+      <span>Web Co.</span>
+    </div>
+  </a>
+  <button class="nav-toggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-content">
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="section-label">// Selected Work</div>
+    <h1>Engineered <span class="hl-green">Portfolio</span></h1>
+    <p>A selection of platforms, systems, and digital products we've precision-built for our clients.</p>
+  </div>
+
+  <!-- PORTFOLIO -->
+  <section>
+    <div class="container">
+
+      <!-- Filter -->
+      <div class="reveal">
+        <div class="filter-tabs" id="filterTabs">
+          <button class="filter-btn active" data-filter="all">All Work</button>
+          <button class="filter-btn" data-filter="web">Web Dev</button>
+          <button class="filter-btn" data-filter="app">Web Apps</button>
+          <button class="filter-btn" data-filter="design">Design</button>
+          <button class="filter-btn" data-filter="brand">Branding</button>
+        </div>
+      </div>
+
+      <div class="portfolio-grid" id="portfolioGrid">
+
+        <!-- Card 1: Featured -->
+        <div class="portfolio-card featured reveal" data-category="web">
+          <div class="portfolio-thumb">
+            <div class="thumb-hex">
+              <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="40,4 74,22 74,58 40,76 6,58 6,22" stroke="rgba(0,255,136,0.4)" stroke-width="1" fill="none"/>
+                <polygon points="40,12 66,26 66,54 40,68 14,54 14,26" stroke="rgba(0,255,136,0.2)" stroke-width="1" fill="none"/>
+              </svg>
+              <span class="hex-label">🌐</span>
+            </div>
+            <div class="portfolio-thumb-overlay">// VIEW PROJECT</div>
+          </div>
+          <div class="portfolio-info">
+            <div class="portfolio-tag">Web Development</div>
+            <h3>NovaTech Corporate Platform</h3>
+            <p>Full custom website and web app for a leading technology firm — including client portal, resource hub, and CMS integration.</p>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="portfolio-card reveal" data-category="app">
+          <div class="portfolio-thumb">
+            <div class="thumb-hex">
+              <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="40,4 74,22 74,58 40,76 6,58 6,22" stroke="rgba(0,195,255,0.4)" stroke-width="1" fill="none"/>
+              </svg>
+              <span class="hex-label">📊</span>
+            </div>
+            <div class="portfolio-thumb-overlay">// VIEW PROJECT</div>
+          </div>
+          <div class="portfolio-info">
+            <div class="portfolio-tag">Web Application</div>
+            <h3>FinFlow Dashboard</h3>
+            <p>Real-time financial analytics dashboard with live data feeds, custom charting, and role-based access control.</p>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="portfolio-card reveal" data-category="brand">
+          <div class="portfolio-thumb">
+            <div class="thumb-hex">
+              <svg viewBox="0 0 80 80" fill="none">
+                <polygon points="40,4 74,22 74,58 40,76 6,58 6,22" stroke="rgba(255,136,0,0.4)" stroke-width="1" fill="none"/>
+              </svg>
+              <span class="hex-label">✦</span>
+            </div>
+            <div class="portfolio-thumb-overlay">// VIEW PROJECT</div>
+          </div>
+          <div class="portfolio-info">
+            <div class="portfolio-tag">Brand Identity</div>
+            <h3>Meridian Consulting Rebrand</h3>
+            <p>Complete brand identity system — logo, typography, colour palette, and full brand guidelines for a professional services firm.</p>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="portfolio-card reveal" data-category="web">
+          <div class="portfolio-thumb">
+            <div class="thumb-hex">
+              <svg viewBox="0 0 80 80" fill="none">
+                <polygon points="40,4 74,22 74,58 40,76 6,58 6,22" stroke="rgba(0,255,136,0.35)" stroke-width="1" fill="none"/>
+              </svg>
+              <span class="hex-label">🛒</span>
+            </div>
+            <div class="portfolio-thumb-overlay">// VIEW PROJECT</div>
+          </div>
+          <div class="portfolio-info">
+            <div class="portfolio-tag">Web Development</div>
+            <h3>Luxe E-Commerce Store</h3>
+            <p>High-end fashion e-commerce platform with custom product filters, wishlist functionality, and Stripe integration.</p>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="portfolio-card reveal" data-category="app">
+          <div class="portfolio-thumb">
+            <div class="thumb-hex">
+              <svg viewBox="0 0 80 80" fill="none">
+                <polygon points="40,4 74,22 74,58 40,76 6,58 6,22" stroke="rgba(180,0,255,0.4)" stroke-width="1" fill="none"/>
+              </svg>
+              <span class="hex-label">📅</span>
+            </div>
+            <div class="portfolio-thumb-overlay">// VIEW PROJECT</div>
+          </div>
+          <div class="portfolio-info">
+            <div class="portfolio-tag">Web Application</div>
+            <h3>BookSmart Scheduling App</h3>
+            <p>Multi-business booking and appointment management system with automated reminders and calendar sync.</p>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="portfolio-card reveal" data-category="design">
+          <div class="portfolio-thumb">
+            <div class="thumb-hex">
+              <svg viewBox="0 0 80 80" fill="none">
+                <polygon points="40,4 74,22 74,58 40,76 6,58 6,22" stroke="rgba(0,255,200,0.35)" stroke-width="1" fill="none"/>
+              </svg>
+              <span class="hex-label">🎨</span>
+            </div>
+            <div class="portfolio-thumb-overlay">// VIEW PROJECT</div>
+          </div>
+          <div class="portfolio-info">
+            <div class="portfolio-tag">UI Design</div>
+            <h3>Helios SaaS UI System</h3>
+            <p>Comprehensive design system for a SaaS platform — 200+ components, dark/light modes, and full Figma documentation.</p>
+          </div>
+        </div>
+
+        <!-- Card 7 -->
+        <div class="portfolio-card reveal" data-category="brand">
+          <div class="portfolio-thumb">
+            <div class="thumb-hex">
+              <svg viewBox="0 0 80 80" fill="none">
+                <polygon points="40,4 74,22 74,58 40,76 6,58 6,22" stroke="rgba(255,200,0,0.4)" stroke-width="1" fill="none"/>
+              </svg>
+              <span class="hex-label">🏷️</span>
+            </div>
+            <div class="portfolio-thumb-overlay">// VIEW PROJECT</div>
+          </div>
+          <div class="portfolio-info">
+            <div class="portfolio-tag">Branding &amp; Design</div>
+            <h3>Solara Energy Brand Launch</h3>
+            <p>Full brand identity and website launch for a renewable energy startup — from logo to live site in 6 weeks.</p>
+          </div>
+        </div>
+
+        <!-- Card 8 -->
+        <div class="portfolio-card reveal" data-category="web">
+          <div class="portfolio-thumb">
+            <div class="thumb-hex">
+              <svg viewBox="0 0 80 80" fill="none">
+                <polygon points="40,4 74,22 74,58 40,76 6,58 6,22" stroke="rgba(0,255,136,0.3)" stroke-width="1" fill="none"/>
+              </svg>
+              <span class="hex-label">🏥</span>
+            </div>
+            <div class="portfolio-thumb-overlay">// VIEW PROJECT</div>
+          </div>
+          <div class="portfolio-info">
+            <div class="portfolio-tag">Web Development</div>
+            <h3>MedFirst Patient Portal</h3>
+            <p>Secure, HIPAA-conscious patient information portal with appointment management and document upload.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="text-align:center;">
+    <div class="container reveal">
+      <div class="section-label">// Join Our Clients</div>
+      <h2 class="section-title">Your Project <span class="hl-green">Could Be Next</span></h2>
+      <p style="color:var(--text-dim); max-width:440px; margin:0 auto 36px;">
+        Let's build something worth showcasing. Get in touch and let's scope your project.
+      </p>
+      <a href="contact.html" class="btn-primary">Start a Project ▸</a>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">PRASEODYMIUM WEB CO.</div>
+    <div class="footer-copy">© 2025 Praseodymium Web Co. — All rights reserved.</div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+  // Filter tabs
+  const tabs = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.portfolio-card');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const filter = tab.dataset.filter;
+      cards.forEach(card => {
+        const cat = card.dataset.category;
+        if (filter === 'all' || cat === filter) {
+          card.style.display = '';
+          setTimeout(() => { card.style.opacity = '1'; card.style.transform = 'none'; }, 10);
+        } else {
+          card.style.opacity = '0';
+          card.style.transform = 'scale(0.96)';
+          setTimeout(() => { card.style.display = 'none'; }, 300);
+        }
+      });
+    });
+  });
+</script>
+</body>
+</html>
